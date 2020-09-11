@@ -1,0 +1,8 @@
+<resources>
+    <string name="app_name">GADS</string>
+    <string name="fn_edit">First Name</string>
+    <string name="ln_edit">Last Name</string>
+    <string name="em_edit">Email Address</string>
+    <string name="git_edit">Project on GITHUB (link)</string>
+    <string name="sub">Submit</string>
+</resources>
