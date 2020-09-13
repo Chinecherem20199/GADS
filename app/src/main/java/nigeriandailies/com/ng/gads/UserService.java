@@ -8,8 +8,8 @@ import retrofit2.http.GET;
 public interface UserService {
 
     @GET("/api/hours")
-    Call<List<UserResponse>> getAllHours();
+    Call<List<Skill_IQ_Response>> getAllHours();
 
     @GET("/api/skilliq")
-    Call<List<UserResponse>> getAllSkillQ();
+    Call<List<Skill_IQ_Response>> getAllSkillQ();
 }

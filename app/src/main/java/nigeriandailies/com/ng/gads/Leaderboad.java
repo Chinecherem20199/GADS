@@ -1,6 +1,5 @@
 package nigeriandailies.com.ng.gads;
 
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
@@ -46,32 +45,32 @@ public class Leaderboad extends AppCompatActivity {
         viewPager.setAdapter(adapter);
         tabLayout.setupWithViewPager(viewPager);
 
-        Call<List<UserResponse>> userList = ApiClient.getUserService().getAllHours();
-        userList.enqueue(new Callback<List<UserResponse>>() {
+        Call<List<Skill_IQ_Response>> userList = ApiClient.getUserService().getAllHours();
+        userList.enqueue(new Callback<List<Skill_IQ_Response>>() {
             @Override
-            public void onResponse(Call<List<UserResponse>> call, Response<List<UserResponse>> response) {
+            public void onResponse(Call<List<Skill_IQ_Response>> call, Response<List<Skill_IQ_Response>> response) {
                 if (response.isSuccessful()){
                     Log.e("success", response.body().toString());
                 }
             }
 
             @Override
-            public void onFailure(Call<List<UserResponse>> call, Throwable t) {
+            public void onFailure(Call<List<Skill_IQ_Response>> call, Throwable t) {
                 Log.e("failure", t.getLocalizedMessage());
 
 
             }
         });
         //Start again
-        Call<List<UserResponse>> userList2 = ApiClient.getUserService().getAllSkillQ();
-        userList2.enqueue(new Callback<List<UserResponse>>() {
+        Call<List<Skill_IQ_Response>> userList2 = ApiClient.getUserService().getAllSkillQ();
+        userList2.enqueue(new Callback<List<Skill_IQ_Response>>() {
             @Override
-            public void onResponse(Call<List<UserResponse>> call, Response<List<UserResponse>> response) {
+            public void onResponse(Call<List<Skill_IQ_Response>> call, Response<List<Skill_IQ_Response>> response) {
 
             }
 
             @Override
-            public void onFailure(Call<List<UserResponse>> call, Throwable t) {
+            public void onFailure(Call<List<Skill_IQ_Response>> call, Throwable t) {
 
             }
         });

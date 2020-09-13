@@ -12,15 +12,15 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
-public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVH> {
-    private List<UserResponse> userResponslist ;
+public class Skill_IQ_Adapter extends RecyclerView.Adapter<Skill_IQ_Adapter.UserAdapterVH> {
+    private List<Skill_IQ_Response> userResponslist ;
     private Context context;
 
 
-    public UserAdapter() {
+    public Skill_IQ_Adapter() {
     }
 
-    public void setData(List<UserResponse> userResponslist) {
+    public void setData(List<Skill_IQ_Response> userResponslist) {
         this.userResponslist = userResponslist;
         notifyDataSetChanged();
     }
@@ -29,15 +29,15 @@ public class UserAdapter extends RecyclerView.Adapter<UserAdapter.UserAdapterVH>
     @Override
     public UserAdapterVH onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
         context = parent.getContext();
-        return new UserAdapter.UserAdapterVH(LayoutInflater.from(context).inflate(R.layout.learning_leader_display, parent, false));
+        return new Skill_IQ_Adapter.UserAdapterVH(LayoutInflater.from(context).inflate(R.layout.skill_iq_leader_display, parent, false));
     }
 
     @Override
     public void onBindViewHolder(@NonNull UserAdapterVH holder, int position) {
-        UserResponse userResponse = userResponslist.get(position);
-        String name = userResponse.getName();
-        int hourse = userResponse.getHours();
-        String country = userResponse.getCountry();
+        Skill_IQ_Response skillIQResponse = userResponslist.get(position);
+        String name = skillIQResponse.getName();
+        String hourse = skillIQResponse.getScore();
+        String country = skillIQResponse.getCountry();
 
         holder.name.setText(name);
         holder.hours.setText(hourse);

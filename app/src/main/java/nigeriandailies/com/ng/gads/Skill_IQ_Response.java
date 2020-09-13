@@ -1,12 +1,12 @@
 package nigeriandailies.com.ng.gads;
 
-public class UserResponse {
+public class Skill_IQ_Response {
 //    Email Address = entry.1824927963
 //    Name = entry.1877115667
 //    Last Name = entry.2006916086
 //    Link to project = entry.284483984
     private String name;
-    private int hours;
+    private String score;
     private String country;
     private String badgeUrl;
 
@@ -18,12 +18,12 @@ public class UserResponse {
         this.name = name;
     }
 
-    public int getHours() {
-        return hours;
+    public String getScore() {
+        return score;
     }
 
-    public void setHours(int hours) {
-        this.hours = hours;
+    public void setScore(String score) {
+        this.score = score;
     }
 
     public String getCountry() {
@@ -44,9 +44,9 @@ public class UserResponse {
 
     @Override
     public String toString() {
-        return "UserResponse{" +
+        return "Skill_IQ_Response{" +
                 "name='" + name + '\'' +
-                ", hours=" + hours +
+                ", hours=" + score +
                 ", country='" + country + '\'' +
                 ", badgeUrl='" + badgeUrl + '\'' +
                 '}';

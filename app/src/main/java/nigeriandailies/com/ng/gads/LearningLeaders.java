@@ -11,6 +11,9 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.DividerItemDecoration;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import java.util.List;
 
@@ -22,6 +25,8 @@ public class LearningLeaders extends Fragment {
 
 
     View view;
+    RecyclerView recyclerView2;
+    LearningAdapter adapter;
 
     public LearningLeaders(){
 
@@ -39,4 +44,37 @@ public class LearningLeaders extends Fragment {
 
     }
 
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView2 = view.findViewById(R.id.recy_learning);
+
+        recyclerView2.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView2.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        adapter = new LearningAdapter();
+        getAllUsers();
+    }
+
+    public void getAllUsers(){
+        Call<List<Skill_IQ_Response>> userList2 = ApiClient.getUserService().getAllHours();
+        userList2.enqueue(new Callback<List<Skill_IQ_Response>>() {
+            @Override
+            public void onResponse(Call<List<Skill_IQ_Response>> call, Response<List<Skill_IQ_Response>> response) {
+                if (response.isSuccessful()){
+                    List<Skill_IQ_Response> skillIQRespons = response.body();
+//                    skillIQAdapter = new Skill_IQ_Adapter(getActivity(), l)
+                    adapter.setData(skillIQRespons);
+                    recyclerView2.setAdapter(adapter);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Skill_IQ_Response>> call, Throwable t) {
+
+            }
+        });
+
+    }
 }

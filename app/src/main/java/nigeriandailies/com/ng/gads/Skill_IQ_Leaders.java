@@ -24,55 +24,64 @@ public class Skill_IQ_Leaders extends Fragment {
 
 
     View view;
-   private RecyclerView recyclerView;
-    private UserAdapter userAdapter;
-    private List<UserResponse> list;
+   RecyclerView recyclerView;
+   Skill_IQ_Adapter skillIQAdapter;
+//    private List<Skill_IQ_Response> list;
+     LinearLayoutManager layoutManager;
 
 
     public Skill_IQ_Leaders(){
 
-//        recyclerView = view.findViewById(R.id.recy_skill);
-
-//        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-//        recyclerView.addItemDecoration(new DividerItemDecoration(getActivity(), DividerItemDecoration.VERTICAL));
-//        userAdapter = new UserAdapter();
-//
-//        getAllUsers();
     }
+
 
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         view = inflater.inflate(R.layout.skill_iq_leaders, container, false);
-        recyclerView = (RecyclerView) view.findViewById(R.id.recy_skill);
 
-        recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
-//        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
-        userAdapter = new UserAdapter();
-        recyclerView.setAdapter(userAdapter);
         return view;
     }
-//    public void getAllUsers(){
-//        Call<List<UserResponse>> userList2 = ApiClient.getUserService().getAllSkillQ();
-//        userList2.enqueue(new Callback<List<UserResponse>>() {
-//            @Override
-//            public void onResponse(Call<List<UserResponse>> call, Response<List<UserResponse>> response) {
-//                if (response.isSuccessful()){
-//                    List<UserResponse> userResponses = response.body();
-//                    userAdapter.setData(userResponses);
-//                    recyclerView.setAdapter(userAdapter);
-//                }
-//
-//            }
-//
-//            @Override
-//            public void onFailure(Call<List<UserResponse>> call, Throwable t) {
-//
-//            }
-//        });
-//
-//    }
+
+
+    //test here
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        recyclerView =  view.findViewById(R.id.recy_skill);
+
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.addItemDecoration(new DividerItemDecoration(getContext(), DividerItemDecoration.VERTICAL));
+        skillIQAdapter = new Skill_IQ_Adapter();
+        getAllUsers();
+
+
+    }
+
+
+    public void getAllUsers(){
+        Call<List<Skill_IQ_Response>> userList2 = ApiClient.getUserService().getAllSkillQ();
+        userList2.enqueue(new Callback<List<Skill_IQ_Response>>() {
+            @Override
+            public void onResponse(Call<List<Skill_IQ_Response>> call, Response<List<Skill_IQ_Response>> response) {
+                if (response.isSuccessful()){
+                    List<Skill_IQ_Response> skillIQRespons = response.body();
+//                    skillIQAdapter = new Skill_IQ_Adapter(getActivity(), l)
+                    skillIQAdapter.setData(skillIQRespons);
+                    recyclerView.setAdapter(skillIQAdapter);
+                }
+
+            }
+
+            @Override
+            public void onFailure(Call<List<Skill_IQ_Response>> call, Throwable t) {
+
+            }
+        });
+
+    }
 
 
 

@@ -10,4 +10,17 @@
     app:theme="@style/ToolbarTheme"
     app:popupTheme="@style/PopupTheme">
 
+    <Button android:id="@+id/submit22"
+        android:layout_width="wrap_content"
+        android:layout_gravity="end"
+        android:padding="10dp"
+        android:layout_margin="10dp"
+        android:text="Submit"
+        android:textAllCaps="false"
+        android:textStyle="bold"
+        android:textSize="15sp"
+        android:textColor="@android:color/black"
+        android:background="@drawable/buttion"
+        android:layout_height="wrap_content"/>
+
 </androidx.appcompat.widget.Toolbar>
