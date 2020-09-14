@@ -4,13 +4,20 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 import androidx.viewpager.widget.ViewPager;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.util.Log;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.MenuItem;
+import android.view.View;
+import android.widget.Toast;
 //import android.widget.Toolbar;
 
 import com.google.android.material.tabs.TabLayout;
 
 import java.util.List;
+import java.util.zip.Inflater;
 
 import retrofit2.Call;
 import retrofit2.Callback;
@@ -18,6 +25,7 @@ import retrofit2.Response;
 
 
 public class Leaderboad extends AppCompatActivity {
+    private static final String TAG = "Leaderboad";
     private TabLayout tabLayout;
     private ViewPager viewPager;
     private Toolbar toolbar;
@@ -33,6 +41,15 @@ public class Leaderboad extends AppCompatActivity {
         setSupportActionBar(toolbar);
 //        getSupportActionBar().setDisplayHomeAsUpEnabled(true);
         getSupportActionBar().setTitle("LEADERBOAD");
+
+        toolbar.findViewById(R.id.submit22).setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(Leaderboad.this, MainActivity.class);
+                startActivity(intent);
+                finish();
+            }
+        });
 
         tabLayout = findViewById(R.id.tabs);
         viewPager = findViewById(R.id.viewPager);
@@ -83,5 +100,19 @@ public class Leaderboad extends AppCompatActivity {
 //        ActionBar actionBar = getSupportActionBar();
 //        actionBar.setTitle("LEADERBOAD");
 //        actionBar.setElevation(0);
+
+
     }
+
+//    @Override
+//    public boolean onOptionsItemSelected(MenuItem item) {
+//        switch (item.getItemId()) {
+//            case R.id.submit22:
+//                Toast.makeText(this, "Clicked", Toast.LENGTH_SHORT).show();
+//                return true;
+//            default:
+//                return super.onOptionsItemSelected(item);
+//        }
+//    }
+
 }
